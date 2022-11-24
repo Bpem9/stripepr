@@ -1,0 +1,15 @@
+Результат - HTML c инфой и кнопкой:
+<html>
+  <head>
+    <title>{{ name }}</title>
+  </head>
+  <body>
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+    <p>{{ price }}</p>
+    <form method="POST" action="{% url 'buy' id %}">
+        {% csrf_token %}
+        <button id="buy-button" type="submit">Buy</button>
+    </form>
+  </body>
+</html>

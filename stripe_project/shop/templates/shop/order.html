@@ -1,0 +1,24 @@
+Результат - HTML c инфой и кнопкой:
+<html>
+  <head>
+    <title>{{ id }}</title>
+  </head>
+  <body>
+  {% if items %}
+  {% for item in items %}
+    <h1>{{ item }}</h1>
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }}</p>
+  {% endfor %}
+  {% else %}
+  <h1>Корзина пуста!</h1>
+  {% endif %}
+    <h1>Итоговая стоимость:</h1>
+    {% if items %}<h4>{{ total_price }}руб.</h4>
+    <form method="POST" action="{% url 'intent' id %}">
+        {% csrf_token %}
+        <button id="buy-button" type="submit">Buy</button>
+    </form>
+  {% else %}<h4>С Вас ни копейки!</h4>{% endif %}
+  </body>
+</html>
